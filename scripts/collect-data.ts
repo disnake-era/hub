@@ -20,12 +20,31 @@ const octokit = new Octokit({
                 url
               }
               name
-              dependencyGraphManifests { ... }
+              dependencyGraphManifests(first: 10, withDependencies: true) {
+                edges {
+                  node {
+                    dependencies(first: 10) {
+                      edges {
+                        node {
+                          packageManager
+                          packageName
+                          requirements
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               descriptionHTML
               diskUsage
               homepageUrl
-              primaryLanguage { ... }
-              latestRelease { ... }
+              primaryLanguage {
+                color
+                name
+              }
+              latestRelease {
+                tagName
+              }
               licenseInfo {
                 spdxId
               }
