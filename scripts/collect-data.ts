@@ -3,6 +3,7 @@ import { createActionAuth } from '@octokit/auth-action';
 
 const octokit = new Octokit({
   authStrategy: createActionAuth,
+  previews: ["hawkgirl-preview"],
 });
 
 (async () => {
@@ -13,10 +14,23 @@ const octokit = new Octokit({
           node {
             ... on Repository {
               owner {
+                avatarUrl
+                login
                 url
               }
               name
+              dependencyGraphManifests
+              descriptionHTML
+              diskUsage
+              homepageUrl
+              primaryLanguage
+              latestRelease
+              licenseInfo {
+                spdxId
+              }
               stargazerCount
+              updatedAt
+              url
             }
           }
         }
