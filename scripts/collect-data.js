@@ -42,13 +42,14 @@ var octokit = new core_1.Octokit({
     authStrategy: auth_action_1.createActionAuth,
 });
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var extensions, ext;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var extensions, _i, _a, ext;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0: return [4 /*yield*/, octokit.graphql("\n    query {\n      search(query: \"topic:disnake-extension\", type: REPOSITORY, first: 10) {\n        edges {\n          node {\n            ... on Repository {\n              owner {\n                url\n              }\n              name\n              stargazerCount\n            }\n          }\n        }\n      }\n    }\n  ")];
             case 1:
-                extensions = _a.sent();
-                for (ext in extensions.search.edges) {
+                extensions = _b.sent();
+                for (_i = 0, _a = extensions.search.edges; _i < _a.length; _i++) {
+                    ext = _a[_i];
                     console.log(ext);
                 }
                 return [2 /*return*/];

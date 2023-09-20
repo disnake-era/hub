@@ -24,7 +24,7 @@ const octokit = new Octokit({
     }
   `);
 
-  for (const ext in extensions.search.edges) {
+  for (const ext of extensions.search.edges) {
     console.log(ext);
   }
 })().then(() => console.log("done"));
