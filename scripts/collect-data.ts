@@ -5,7 +5,8 @@ const octokit = new Octokit({
   authStrategy: createActionAuth,
 });
 
-const extensions = octokit.graphql(`
+(async () => {
+  const extensions = await octokit.graphql(`
     query {
       search(query: "topic:disnake-extension", type: REPOSITORY, first: 10) {
         edges {
@@ -23,4 +24,5 @@ const extensions = octokit.graphql(`
     }
   `);
 
-console.log(extensions);
+  console.log(extensions);
+})().then(() => console.log("done"));
