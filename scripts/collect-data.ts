@@ -6,7 +6,7 @@ const octokit = new Octokit({
 });
 
 (async () => {
-  const extensions = await octokit.graphql(`
+  const extensions: any = await octokit.graphql(`
     query {
       search(query: "topic:disnake-extension", type: REPOSITORY, first: 10) {
         edges {
@@ -24,5 +24,7 @@ const octokit = new Octokit({
     }
   `);
 
-  console.log(extensions);
+  for (const ext in extensions.search.edges) {
+    console.log(ext);
+  }
 })().then(() => console.log("done"));
