@@ -18,3 +18,4 @@ jobs:
           version: latest
           run_install: true
       - run: node scripts/collect-data.js
+      - run: cat ./data.json

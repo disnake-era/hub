@@ -38,21 +38,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@octokit/core");
 var auth_action_1 = require("@octokit/auth-action");
+var fs_1 = require("fs");
 var octokit = new core_1.Octokit({
     authStrategy: auth_action_1.createActionAuth,
     previews: ["hawkgirl-preview"],
 });
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var extensions, _i, _a, ext;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0: return [4 /*yield*/, octokit.graphql("\n    query {\n      search(query: \"topic:disnake-extension\", type: REPOSITORY, first: 10) {\n        edges {\n          node {\n            ... on Repository {\n              owner {\n                avatarUrl\n                login\n                url\n              }\n              name\n              dependencyGraphManifests\n              descriptionHTML\n              diskUsage\n              homepageUrl\n              primaryLanguage\n              latestRelease\n              licenseInfo {\n                spdxId\n              }\n              stargazerCount\n              updatedAt\n              url\n            }\n          }\n        }\n      }\n    }\n  ")];
+    var extensions, content;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, octokit.graphql("\n    query {\n      search(query: \"topic:disnake-extension\", type: REPOSITORY, first: 10) {\n        edges {\n          node {\n            ... on Repository {\n              owner {\n                avatarUrl\n                login\n                url\n              }\n              name\n              dependencyGraphManifests { ... }\n              descriptionHTML\n              diskUsage\n              homepageUrl\n              primaryLanguage { ... }\n              latestRelease { ... }\n              licenseInfo {\n                spdxId\n              }\n              stargazerCount\n              updatedAt\n              url\n            }\n          }\n        }\n      }\n    }\n  ")];
             case 1:
-                extensions = _b.sent();
-                for (_i = 0, _a = extensions.search.edges; _i < _a.length; _i++) {
-                    ext = _a[_i];
-                    console.log(ext);
-                }
+                extensions = _a.sent();
+                content = JSON.stringify(extensions);
+                (0, fs_1.writeFile)("./data.json", content, function () { });
                 return [2 /*return*/];
         }
     });

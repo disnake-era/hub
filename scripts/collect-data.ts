@@ -1,5 +1,6 @@
 import { Octokit } from '@octokit/core';
 import { createActionAuth } from '@octokit/auth-action';
+import { writeFile } from 'fs';
 
 const octokit = new Octokit({
   authStrategy: createActionAuth,
@@ -19,12 +20,12 @@ const octokit = new Octokit({
                 url
               }
               name
-              dependencyGraphManifests
+              dependencyGraphManifests { ... }
               descriptionHTML
               diskUsage
               homepageUrl
-              primaryLanguage
-              latestRelease
+              primaryLanguage { ... }
+              latestRelease { ... }
               licenseInfo {
                 spdxId
               }
@@ -38,7 +39,6 @@ const octokit = new Octokit({
     }
   `);
 
-  for (const ext of extensions.search.edges) {
-    console.log(ext);
-  }
+  const content = JSON.stringify(extensions);
+  writeFile("./data.json", content, () => {});
 })().then(() => console.log("done"));
