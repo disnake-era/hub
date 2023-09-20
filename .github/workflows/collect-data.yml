@@ -13,4 +13,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: latest
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
       - run: node scripts/collect-data.js
