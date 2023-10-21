@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - .github
+      - .github/
       - scripts/collect-data.ts
   schedule:
     - cron: 0 0 * * 1
