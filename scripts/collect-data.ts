@@ -61,6 +61,7 @@ const octokit = new Octokit({
   let exts: Array<Map<string, any>> = [];
 
   for (const repo_edge of extensions) {
+    console.debug(`ITER REPO = ${repo_edge}`)
     let repo = repo_edge.node;
     let map = new Map();
 
@@ -78,6 +79,8 @@ const octokit = new Octokit({
 
     exts.push(map);
   }
+
+  console.debug(`EXTS = ${exts}`)
 
   writeFileSync("data.json", JSON.stringify(exts));
 })().then(() => console.log("done"));
