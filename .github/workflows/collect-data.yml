@@ -1,5 +1,10 @@
 on:
   push:
+    paths:
+      - .github
+      - scripts/collect-data.ts
+  schedule:
+    - cron: 0 0 * * 1
 
 env:
   PAT1: ${{ secrets.PAT1 }}
