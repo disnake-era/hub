@@ -2,6 +2,7 @@ on:
   push:
 
 env:
+  PAT1: ${{ secrets.PAT1 }}
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:

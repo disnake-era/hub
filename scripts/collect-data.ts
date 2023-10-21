@@ -3,7 +3,7 @@ import { createActionAuth } from '@octokit/auth-action';
 import { writeFileSync } from 'fs';
 
 const octokit = new Octokit({
-  authStrategy: createActionAuth,
+  auth: process.env.PAT1,
   previews: ["hawkgirl-preview"],
 });
 
@@ -58,10 +58,9 @@ const octokit = new Octokit({
     }
   `);
 
-  let exts: Array<Map<string, any>> = [];
+  let exts: Array<Map<string, any>> = new Array();
 
-  for (const repo_edge of extensions) {
-    console.debug(`ITER REPO = ${repo_edge}`)
+  for (const repo_edge of extensions.search.edges) {
     let repo = repo_edge.node;
     let map = new Map();
 
@@ -77,7 +76,7 @@ const octokit = new Octokit({
     map.set("updatedAt", repo.updatedAt);
     map.set("url", repo.url);
 
-    exts.push(map);
+    exts.push(Object.fromEntries(map));
   }
 
   console.debug(`EXTS = ${exts}`)
