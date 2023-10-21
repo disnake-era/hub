@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/core';
 import { createActionAuth } from '@octokit/auth-action';
-import { writeFile } from 'fs';
+import { writeFileSync } from 'fs';
 
 const octokit = new Octokit({
   authStrategy: createActionAuth,
@@ -58,6 +58,26 @@ const octokit = new Octokit({
     }
   `);
 
-  const content = JSON.stringify(extensions);
-  writeFile("./data.json", content, () => {});
+  let exts: Array<Map<string, any>> = [];
+
+  for (const repo_edge of extensions) {
+    let repo = repo_edge.node;
+    let map = new Map();
+
+    map.set("owner", repo.owner);
+    map.set("name", repo.name);
+    map.set("descriptionHTML", repo.descriptionHTML);
+    map.set("diskUsage", repo.diskUsage);
+    map.set("homepageUrl", repo.homepageUrl);
+    map.set("primaryLanguage", repo.primaryLanguage);
+    map.set("latestRelease", repo.latestRelease);
+    map.set("licenseInfo", repo.licenseInfo);
+    map.set("stargazerCount", repo.stargazerCount);
+    map.set("updatedAt", repo.updatedAt);
+    map.set("url", repo.url);
+
+    exts.push(map);
+  }
+
+  writeFileSync("data.json", JSON.stringify(exts));
 })().then(() => console.log("done"));

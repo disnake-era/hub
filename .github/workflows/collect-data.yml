@@ -17,5 +17,6 @@ jobs:
         with:
           version: latest
           run_install: true
+      - run: pnpm run tsc scripts/collect-data.ts
       - run: node scripts/collect-data.js
       - run: cat ./data.json
