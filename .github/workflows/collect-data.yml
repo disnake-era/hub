@@ -6,6 +6,8 @@ env:
 
 jobs:
   dump:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +19,11 @@ jobs:
         with:
           version: latest
           run_install: true
-      - run: pnpm run tsc scripts/collect-data.ts
+      - run: pnpm exec tsc scripts/collect-data.ts
       - run: node scripts/collect-data.js
-      - run: cat ./data.json
+      - run: |
+          git add data.json
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -m "ci: Data dump update."
+          git push
