@@ -9,6 +9,7 @@ export default function Label({ header, subheader }: { header: string, subheader
                 .label {
                     margin-top: 100px;
                     text-align: center;
+                    margin-bottom: 25px;
                 }
 
                 .label-header {

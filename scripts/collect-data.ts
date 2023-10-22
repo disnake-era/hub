@@ -1,11 +1,7 @@
 import { Octokit } from '@octokit/core';
-import { createActionAuth } from '@octokit/auth-action';
-import { writeFileSync } from 'fs';
+import { writeFileSync } from 'node:fs';
 
-const octokit = new Octokit({
-  auth: process.env.PAT1,
-  previews: ["hawkgirl-preview"],
-});
+const octokit = new Octokit({ auth: process.env.PAT1 });
 
 (async () => {
   const extensions: any = await octokit.graphql(`
@@ -20,21 +16,6 @@ const octokit = new Octokit({
                 url
               }
               name
-              dependencyGraphManifests(first: 10, withDependencies: true) {
-                edges {
-                  node {
-                    dependencies(first: 10) {
-                      edges {
-                        node {
-                          packageManager
-                          packageName
-                          requirements
-                        }
-                      }
-                    }
-                  }
-                }
-              }
               descriptionHTML
               diskUsage
               homepageUrl
@@ -44,6 +25,7 @@ const octokit = new Octokit({
               }
               latestRelease {
                 tagName
+                publishedAt
               }
               licenseInfo {
                 spdxId
@@ -68,11 +50,11 @@ const octokit = new Octokit({
     map.set("name", repo.name);
     map.set("descriptionHTML", repo.descriptionHTML);
     map.set("diskUsage", repo.diskUsage);
-    map.set("homepageUrl", repo.homepageUrl);
+    map.set("homepage", repo.homepageUrl);
     map.set("primaryLanguage", repo.primaryLanguage);
     map.set("latestRelease", repo.latestRelease);
-    map.set("licenseInfo", repo.licenseInfo);
-    map.set("stargazerCount", repo.stargazerCount);
+    map.set("license", repo.licenseInfo?.spdxId);
+    map.set("stars", repo.stargazerCount);
     map.set("updatedAt", repo.updatedAt);
     map.set("url", repo.url);
 
