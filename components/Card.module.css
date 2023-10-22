@@ -1,0 +1,53 @@
+.card {
+    background-color: #2b2b2e;
+    flex: 1 1 auto;
+    align-self: flex-start;
+}
+
+.cardHeader {
+    font-size: 30px;
+
+    margin-top: 8px;
+    margin-left: 8px;
+
+    display: flex;
+    flex: 1 1;
+    align-items: center;
+}
+
+.cardOwnerAvatar {
+    /* TODO: should these match the ones in the code and vice-versa? */
+    width: 48px;
+    height: 48px;
+}
+
+.cardSlug {
+    /* Distance from the owner icon on the left. */
+    margin-left: 8px;
+}
+
+.cardSlug a:hover {
+    text-decoration: underline;
+}
+
+.cardSlugSlash {
+    /* Spaces with <pre> are too big. */
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.cardStars {
+    /* Needed to grow space to the right */
+    flex: 1 1;
+    /* Flexbox to align star icon and count text to the
+    right (`float: right does not work inside flexboxes) */
+    display: flex;
+    /* Actual thing that aligns stuff to the right. */
+    justify-content: flex-end;
+}
+
+.cardStarsIcon {
+    /* Icon is not centered by default, even though .cardHeader
+    should've probably done that. */
+    align-self: center;
+}
