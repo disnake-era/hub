@@ -37,10 +37,21 @@ export default function Card({ data }: { data: Repo }) {
                     <span className={ styles.cardSlugSlash }>/</span>
                     <a href={ data.url }>{ data.name }</a>
                 </span>
-                <span className={styles.cardStars}>
-                    <Star className={styles.cardStarsIcon} />
-                    <span className={styles.cardStarsText}>{data.stars ? data.stars : data.stargazerCount}</span>
+                <span className={ styles.cardStars }>
+                    <Star className={ styles.cardStarsIcon } />
+                    <span className={ styles.cardStarsText }>{ data.stars ? data.stars : data.stargazerCount }</span>
                 </span>
+            </div>
+            <hr className={ styles.cardDescriptionSeparator } />
+            <div className={ styles.cardDescription }>
+                { /* I trust GitHub 😊 */ }
+                <span dangerouslySetInnerHTML={{ __html: data.descriptionHTML }} />
+            </div>
+            <div className={ styles.cardMetadata }>
+                <div className={ styles.cardMetadataTag }>
+                    <Tag className={ styles.cardMetadataTagIcon } />
+                    <span className={ styles.cardMetadataTagText }>{ data.latestRelease ? data.latestRelease.tagName : <i>No releases yet.</i> }</span>
+                </div>
             </div>
         </div>
     )
