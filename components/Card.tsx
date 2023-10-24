@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Tag, Star } from "react-feather"
+import { Tag, Star, FileText as License } from "react-feather"
 import styles from "./Card.module.css"
 
 type Repo = {
@@ -16,13 +16,9 @@ type Repo = {
         color: string,
         name: string,
     } | null,
-    latestRelease: {
-        tagName: string,
-        publishedAt: string,
-    } | null,
+    latestRelease: string | null,
     license: string | null,
     stars: number | null,
-    stargazerCount: number | null,
     updatedAt: string,
     url: string,
 }
@@ -39,7 +35,7 @@ export default function Card({ data }: { data: Repo }) {
                 </span>
                 <span className={ styles.cardStars }>
                     <Star className={ styles.cardStarsIcon } />
-                    <span className={ styles.cardStarsText }>{ data.stars ? data.stars : data.stargazerCount }</span>
+                    <span className={ styles.cardStarsText }>{ data.stars }</span>
                 </span>
             </div>
             <hr className={ styles.cardDescriptionSeparator } />
@@ -48,9 +44,13 @@ export default function Card({ data }: { data: Repo }) {
                 <span dangerouslySetInnerHTML={{ __html: data.descriptionHTML }} />
             </div>
             <div className={ styles.cardMetadata }>
-                <div className={ styles.cardMetadataTag }>
-                    <Tag className={ styles.cardMetadataTagIcon } />
-                    <span className={ styles.cardMetadataTagText }>{ data.latestRelease ? data.latestRelease.tagName : <i>No releases yet.</i> }</span>
+                <div className={ styles.cardMetadataField }>
+                    <Tag className={ styles.cardMetadataFieldIcon } />
+                    <span className={ styles.cardMetadataFieldText }>{ data.latestRelease ? data.latestRelease : <i>No releases yet.</i> }</span>
+                </div>
+                <div className={ styles.cardMetadataField }>
+                    <License className={ styles.cardMetadataFieldIcon } />
+                    <span className={ styles.cardMetadataFieldText }>License: { data.license ? data.license : "none." }</span>
                 </div>
             </div>
         </div>

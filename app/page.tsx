@@ -1,7 +1,8 @@
 import Label from '../components/Label';
 import Card from '../components/Card';
 
-const dataUrl = "https://raw.githubusercontent.com/disnake-era/hub/master/data.json"
+const branch = "feat/actual-cards";
+const dataUrl = `https://raw.githubusercontent.com/disnake-era/hub/${branch}/data.json`
 
 export default async function Home() {
     let repos: Array<any> = await (await fetch(dataUrl)).json();

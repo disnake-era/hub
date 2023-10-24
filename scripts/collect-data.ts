@@ -25,7 +25,6 @@ const octokit = new Octokit({ auth: process.env.PAT1 });
               }
               latestRelease {
                 tagName
-                publishedAt
               }
               licenseInfo {
                 spdxId
@@ -52,7 +51,7 @@ const octokit = new Octokit({ auth: process.env.PAT1 });
     map.set("diskUsage", repo.diskUsage);
     map.set("homepage", repo.homepageUrl);
     map.set("primaryLanguage", repo.primaryLanguage);
-    map.set("latestRelease", repo.latestRelease);
+    map.set("latestRelease", repo.latestRelease?.tagName);
     map.set("license", repo.licenseInfo?.spdxId);
     map.set("stars", repo.stargazerCount);
     map.set("updatedAt", repo.updatedAt);
