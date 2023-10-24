@@ -1,53 +1,107 @@
 .card {
-    background-color: #2b2b2e;
-    flex: 1 1 auto;
-    align-self: flex-start;
+  --horizontal-card-margin: 8px;
+  --vertical-card-margin: 8px;
+
+  background-color: var(--card-bg-color);
+  /* TODO: figure out how to move vardef here */
+  border-radius: 10px;
+
+  flex: 1 1 auto;
+  align-self: flex-start;
 }
 
 .cardHeader {
-    font-size: 30px;
+  font-size: 28px;
 
-    margin-top: 8px;
-    margin-left: 8px;
+  margin-top: var(--vertical-card-margin);
+  margin-left: var(--horizontal-card-margin);
 
-    display: flex;
-    flex: 1 1;
-    align-items: center;
+  display: flex;
+  flex: 1 1;
+  align-items: center;
 }
 
 .cardOwnerAvatar {
-    /* TODO: should these match the ones in the code and vice-versa? */
-    width: 48px;
-    height: 48px;
+  /* TODO: should these match the ones in the code and vice-versa? */
+  width: 48px;
+  height: 48px;
 }
 
 .cardSlug {
-    /* Distance from the owner icon on the left. */
-    margin-left: 8px;
+  /* Distance from the owner icon on the left. */
+  margin-left: var(--horizontal-card-margin);
+  /* Distance from the star icon on the right. */
+  margin-right: var(--horizontal-card-margin);
 }
 
 .cardSlug a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .cardSlugSlash {
-    /* Spaces with <pre> are too big. */
-    margin-left: 4px;
-    margin-right: 4px;
+  /* Spaces with <pre> are too big. */
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .cardStars {
-    /* Needed to grow space to the right */
-    flex: 1 1;
-    /* Flexbox to align star icon and count text to the
+  /* Needed to grow space to the right */
+  flex: 1 1;
+  /* Flexbox to align star icon and count text to the
     right (`float: right does not work inside flexboxes) */
-    display: flex;
-    /* Actual thing that aligns stuff to the right. */
-    justify-content: flex-end;
+  display: flex;
+  /* Actual thing that aligns stuff to the right. */
+  justify-content: flex-end;
+
+  margin-right: var(--horizontal-card-margin);
 }
 
 .cardStarsIcon {
-    /* Icon is not centered by default, even though .cardHeader
+  /* Icon is not centered by default, even though .cardHeader
     should've probably done that. */
-    align-self: center;
+  align-self: center;
+}
+
+.cardDescriptionSeparator {
+  height: 2px;
+  border: none;
+  background-color: #fff;
+
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+
+  margin-top: var(--vertical-card-margin);
+  margin-bottom: var(--vertical-card-margin);
+}
+
+.cardDescription {
+  font-size: 22px;
+  margin-left: var(--horizontal-card-margin);
+}
+
+.cardMetadata {
+  display: flex;
+  flex: 1 1;
+  align-items: center;
+
+  margin-top: var(--vertical-card-margin);
+  margin-bottom: var(--vertical-card-margin);
+  margin-left: var(--horizontal-card-margin);
+  margin-bottom: var(--vertical-card-margin);
+
+  font-size: 20px;
+}
+
+.cardMetadataTag {
+  display: flex;
+  flex: 1 1;
+}
+
+.cardMetadataTagIcon {
+  align-self: center;
+}
+
+.cardMetadataTagText {
+  margin-left: calc(var(--horizontal-card-margin) / 2);
 }

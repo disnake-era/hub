@@ -6,12 +6,14 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --card-bg-color: #d3d3d3;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 227, 227, 227;
     --background-rgb: 27, 27, 29;
+    --card-bg-color: #2b2b2e;
   }
 }
 
