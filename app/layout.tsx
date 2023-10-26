@@ -1,6 +1,7 @@
-import './globals.css'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
+
+import './globals.css'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -9,14 +10,10 @@ export const metadata: Metadata = {
   description: 'The unofficial official hub for disnake extension developers.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={nunito.className}>{children}</body>
+      <body className={ nunito.className }>{ children }</body>
     </html>
   )
 }
