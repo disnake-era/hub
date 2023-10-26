@@ -17,8 +17,6 @@ const octokit = new Octokit({ auth: process.env.PAT1 });
               }
               name
               descriptionHTML
-              diskUsage
-              homepageUrl
               primaryLanguage {
                 color
                 name
@@ -48,8 +46,6 @@ const octokit = new Octokit({ auth: process.env.PAT1 });
     map.set("owner", repo.owner);
     map.set("name", repo.name);
     map.set("descriptionHTML", repo.descriptionHTML);
-    map.set("diskUsage", repo.diskUsage);
-    map.set("homepage", repo.homepageUrl);
     map.set("primaryLanguage", repo.primaryLanguage);
     map.set("latestRelease", repo.latestRelease?.tagName);
     map.set("license", repo.licenseInfo?.spdxId);
@@ -60,7 +56,5 @@ const octokit = new Octokit({ auth: process.env.PAT1 });
     exts.push(Object.fromEntries(map));
   }
 
-  console.debug(`EXTS = ${exts}`)
-
   writeFileSync("data.json", JSON.stringify(exts));
-})().then(() => console.log("done"));
+})().then(() => {});

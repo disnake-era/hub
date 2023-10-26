@@ -7,6 +7,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
   --card-bg-color: #d3d3d3;
+  --card-alt-color: #2b2b2e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,6 +15,7 @@
     --foreground-rgb: 227, 227, 227;
     --background-rgb: 27, 27, 29;
     --card-bg-color: #2b2b2e;
+    --card-alt-color: #d3d3d3;
   }
 }
 

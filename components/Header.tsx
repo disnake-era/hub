@@ -1,4 +1,4 @@
-import styles from './Label.module.css';
+import styles from './Header.module.css';
 
 export default function Label({ header, subheader }: { header: string, subheader: string }) {
     return (

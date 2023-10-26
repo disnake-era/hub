@@ -60,16 +60,20 @@
   /* Icon is not centered by default, even though .cardHeader
     should've probably done that. */
   align-self: center;
+  /* Yes, it does make website better. */
+  margin-right: 2px;
 }
 
 .cardDescriptionSeparator {
+  /* Thickness */
   height: 2px;
+  /* Remove browser-dependent behavior. */
   border: none;
   background-color: #fff;
 
-  width: 95%;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  width: calc(100% - 10px);
+  margin-left: 5px;
+  margin-right: 5px;
 
   margin-top: var(--vertical-card-margin);
   margin-bottom: var(--vertical-card-margin);
@@ -81,23 +85,48 @@
 }
 
 .cardMetadata {
+  /* Arrange all fields into another horizontal flexbox. */
   display: flex;
   flex: 1 1;
   align-items: center;
 
+  /* Double margin-top is intentional. */
   margin-top: var(--vertical-card-margin);
-  margin-bottom: var(--vertical-card-margin);
-  margin-left: var(--horizontal-card-margin);
   margin-bottom: var(--vertical-card-margin);
 
   font-size: 20px;
 }
 
+/* Essentially just another field */
+.cardMetadataLanguage {
+  display: flex;
+
+  /* Leftmost field has default horizontal margin to be
+  consistent with stuff above it. */
+  margin-left: var(--horizontal-card-margin);
+}
+
+.cardMetadataLanguageIndicator {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border-width: 1px;
+
+  align-self: center;
+}
+
+/* Same as .cardMetadataFieldText */
+.cardMetadataLanguageText {
+  margin-left: calc(var(--horizontal-card-margin) / 2);
+}
+
 .cardMetadataField {
   display: flex;
-  flex: 1 1;
 
-  justify-self: flex-start;
+  /* However, the space between each field shall be twice
+  as big. Using `gap` property on `.cardMetadata` introduces
+  some artifacts (on FF at least) so we can't use it here. */
+  margin-left: calc(var(--horizontal-card-margin) * 2);
 }
 
 .cardMetadataFieldIcon {
