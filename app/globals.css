@@ -6,16 +6,19 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
-  --card-bg-color: #d3d3d3;
-  --card-alt-color: #2b2b2e;
+  --primary-color: #d3d3d3;
+  --alt-color: #2b2b2e;
+
+  --unified-horizontal-margin: 8px;
+  --unified-vertical-margin: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 227, 227, 227;
     --background-rgb: 27, 27, 29;
-    --card-bg-color: #2b2b2e;
-    --card-alt-color: #d3d3d3;
+    --primary-color: #2b2b2e;
+    --alt-color: #d3d3d3;
   }
 }
 

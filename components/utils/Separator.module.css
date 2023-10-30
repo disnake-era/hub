@@ -1,0 +1,11 @@
+.Separator {
+  /* Remove browser-dependent behavior. */
+  border: none;
+
+  width: calc(100% - 10px);
+  margin-left: 5px;
+  margin-right: 5px;
+
+  margin-top: var(--unified-vertical-margin);
+  margin-bottom: var(--unified-vertical-margin);
+}

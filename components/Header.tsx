@@ -1,10 +1,13 @@
-import styles from './Header.module.css';
+import Image from "next/image";
+import tinycolor2 from "tinycolor2";
 
-export default function Label({ header, subheader }: { header: string, subheader: string }) {
+import styles from "./Header.module.css";
+
+export default function Header() {
     return (
-        <div className={ styles.label }>
-            <div className={ styles.labelHeader }>{ header }</div>
-            <div className={ styles.labelSubHeader }>{ subheader }</div>
+        <div className={ styles.Header }>
+            <span className={ styles.HeaderName }>Disnake Extension Hub</span>
+            <span className={ styles.HeaderDescription }>An automatically collected list of disnake extensions.</span>
         </div>
     )
 }

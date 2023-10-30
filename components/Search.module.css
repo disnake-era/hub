@@ -1,0 +1,17 @@
+.Search {
+    flex: 0 1;
+    min-width: 25%;
+
+    padding: var(--unified-horizontal-margin);
+}
+
+.CheckboxGroup {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: var(--unified-horizontal-margin);
+}
+
+.CheckboxLabel {
+    margin-left: calc(var(--unified-horizontal-margin) / 2)
+}

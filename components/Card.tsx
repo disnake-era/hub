@@ -16,9 +16,9 @@ dayjs.extend(relativeTime);
 
 export default function Card({ data }: { data: Repo }) {
     return (
-        <div className={styles.card}>
+        <div className={styles.Card}>
             {CardHeader(data)}
-            <hr className={styles.cardDescriptionSeparator} />
+            <hr className={styles.CardDescriptionSeparator} />
             {CardDescription(data)}
             {CardMetadata(data)}
         </div>
@@ -26,31 +26,31 @@ export default function Card({ data }: { data: Repo }) {
 }
 
 function CardHeader(data: Repo) {
-    return <div className={styles.cardHeader}>
-        <Image src={data.owner.avatarUrl} className={styles.cardOwnerAvatar} width="32" height="32" alt="" />
+    return <div className={styles.CardHeader}>
+        <Image src={data.owner.avatarUrl} className={styles.CardOwnerAvatar} width="32" height="32" alt="" />
         {CardSlug(data)}
         {CardStars(data)}
     </div>
 }
 
 function CardSlug(data: Repo) {
-    return <span className={styles.cardSlug}>
+    return <span className={styles.CardSlug}>
         <a href={data.owner.url}>{data.owner.login}</a>
-        <span className={styles.cardSlugSlash}>/</span>
+        <span className={styles.CardSlugSlash}>/</span>
         <a href={data.url}>{data.name}</a>
     </span>
 }
 
 function CardStars(data: Repo) {
-    return <span className={styles.cardStars}>
-        <Star className={styles.cardStarsIcon} />
-        <span className={styles.cardStarsText}>{data.stars}</span>
+    return <span className={styles.CardStars}>
+        <Star className={styles.CardStarsIcon} />
+        <span className={styles.CardStarsText}>{data.stars}</span>
     </span>
 }
 
 function CardDescription(data: Repo) {
     return (
-        <div className={styles.cardDescription}>
+        <div className={styles.CardDescription}>
             { /* I trust GitHub 😊 */ }
             <span dangerouslySetInnerHTML={{ __html: data.descriptionHTML }} />
         </div>
@@ -59,8 +59,7 @@ function CardDescription(data: Repo) {
 
 function CardMetadata(data: Repo) {
     return (
-        <div className={styles.cardMetadata}>
-            {CardMetadataLanguage(data)}
+        <div className={styles.CardMetadata}>
             {CardMetadataField({ icon: Tag, value: data.latestRelease ? data.latestRelease : <i>No releases yet.</i> })}
             {CardMetadataField({ icon: License, value: data.license ? data.license : <i>Unknown license.</i> })}
             {CardMetadataField({ icon: Clock, value: "Updated " + dayjs(data.updatedAt).fromNow() })}
@@ -68,25 +67,11 @@ function CardMetadata(data: Repo) {
     )
 }
 
-function CardMetadataLanguage(data: Repo) {
-    if (!data.primaryLanguage) return;
-
-    const backgroundColor = data.primaryLanguage.color;
-    const borderColor = tinycolor(backgroundColor).darken(5).toHexString();
-
-    return (
-        <div className={styles.cardMetadataLanguage}>
-            <span className={styles.cardMetadataLanguageIndicator} style={{ backgroundColor, borderColor }}></span>
-            <span className={styles.cardMetadataLanguageText}>{data.primaryLanguage.name}</span>
-        </div>
-    )
-}
-
 function CardMetadataField(props: { icon: Icon, value: any }) {
     return (
-        <div className={styles.cardMetadataField}>
-            <props.icon className={styles.cardMetadataFieldIcon} />
-            <span className={styles.cardMetadataFieldText}>{props.value}</span>
+        <div className={styles.CardMetadataField}>
+            <props.icon className={styles.CardMetadataFieldIcon} />
+            <span className={styles.CardMetadataFieldText}>{props.value}</span>
         </div>
     )
 }

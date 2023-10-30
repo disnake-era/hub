@@ -2,13 +2,14 @@
 
 import useSWR from 'swr';
 
-import Header from '../components/Header';
 import Card from '../components/Card';
 import { Repo } from '../types/Repo';
 
 import styles from "./page.module.css";
+import Header from '../components/Header';
+import Search from '../components/Search';
 
-const dataUrl = `https://raw.githubusercontent.com/disnake-era/hub/feat/actual-cards/data.json`
+const dataUrl = `https://raw.githubusercontent.com/disnake-era/hub/feat/actual-cards/data.json`;
 
 async function fetcher(url: string) {
     return await (await fetch(url)).json()
@@ -22,16 +23,27 @@ export default function Home() {
     }
 
     return (
-        <main>
-            <Header header="Disnake Extension Hub" subheader="The unofficial official hub for disnake extension developers." />
-            {!isLoading ? Cards(data) : LoadingIndicator() }
-        </main>
+        <>
+            <Header />
+            <main>
+                { !isLoading ? MainContainer({ data }) : LoadingIndicator() }
+            </main>
+        </>
     )
 }
 
-function Cards(data: Repo[]) {
+function MainContainer({ data }) {
     return (
-        <div className={ styles.cards }>
+        <div className={styles.MainContainer}>
+            <Search data={data} />
+            <Cards data={data} />
+        </div>
+    )
+}
+
+function Cards({ data }: { data: Repo[] }) {
+    return (
+        <div className={ styles.Cards }>
             { data.map((repo, key) => <Card data={ repo } key={ key }></Card>) }
         </div>
     )
@@ -39,9 +51,9 @@ function Cards(data: Repo[]) {
 
 function LoadingIndicator() {
     return (
-        <div className={ styles.loading }>
-            <div className={ styles.spinner } />
-            <span>Fetching data, please stand by...</span>
+        <div className={ styles.Loading }>
+            <div className={ styles.Spinner } />
+            <span>Performing transcontinental data transmission, please stand by...</span>
         </div>
     )
 }

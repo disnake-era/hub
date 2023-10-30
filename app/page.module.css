@@ -1,23 +1,23 @@
-.cards {
+.MainContainer {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+}
+
+.Cards {
+  flex: 1 0;
+  margin-left: calc(var(--unified-horizontal-margin) * 3);
+  margin-right: calc(var(--unified-horizontal-margin) * 3);
 }
 
 /* Credits: https://www.w3schools.com/howto/howto_css_loader.asp */
 
-.loading {
+.Loading {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.spinner {
-  border: 4px solid var(--card-alt-color);
-  border-top: 4px solid var(--card-bg-color);
+.Spinner {
+  border: 4px solid var(--alt-color);
+  border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   width: 24px;
   height: 24px;

@@ -1,50 +1,47 @@
-.card {
-  --horizontal-card-margin: 8px;
-  --vertical-card-margin: 8px;
+.Card {
+  margin-bottom: var(--unified-vertical-margin);
 
-  background-color: var(--card-bg-color);
-  /* TODO: figure out how to move vardef here */
+  background-color: var(--primary-color);
   border-radius: 10px;
-
-  flex: 1 1 auto;
-  align-self: flex-start;
 }
 
-.cardHeader {
+.CardHeader {
   font-size: 28px;
 
-  margin-top: var(--vertical-card-margin);
-  margin-left: var(--horizontal-card-margin);
+  /* Expand container a bit */
+  padding-top: calc(var(--unified-vertical-margin) / 2);
+
+  margin-left: var(--unified-horizontal-margin);
 
   display: flex;
   flex: 1 1;
   align-items: center;
 }
 
-.cardOwnerAvatar {
+.CardOwnerAvatar {
   /* TODO: should these match the ones in the code and vice-versa? */
   width: 48px;
   height: 48px;
 }
 
-.cardSlug {
+.CardSlug {
   /* Distance from the owner icon on the left. */
-  margin-left: var(--horizontal-card-margin);
+  margin-left: var(--unified-horizontal-margin);
   /* Distance from the star icon on the right. */
-  margin-right: var(--horizontal-card-margin);
+  margin-right: var(--unified-horizontal-margin);
 }
 
-.cardSlug a:hover {
+.CardSlug a:hover {
   text-decoration: underline;
 }
 
-.cardSlugSlash {
+.CardSlugSlash {
   /* Spaces with <pre> are too big. */
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.cardStars {
+.CardStars {
   /* Needed to grow space to the right */
   flex: 1 1;
   /* Flexbox to align star icon and count text to the
@@ -53,86 +50,73 @@
   /* Actual thing that aligns stuff to the right. */
   justify-content: flex-end;
 
-  margin-right: var(--horizontal-card-margin);
+  margin-right: var(--unified-horizontal-margin);
 }
 
-.cardStarsIcon {
-  /* Icon is not centered by default, even though .cardHeader
+.CardStarsIcon {
+  /* Icon is not centered by default, even though .CardHeader
     should've probably done that. */
   align-self: center;
   /* Yes, it does make website better. */
   margin-right: 2px;
 }
 
-.cardDescriptionSeparator {
+.CardDescriptionSeparator {
   /* Thickness */
   height: 2px;
   /* Remove browser-dependent behavior. */
   border: none;
-  background-color: #fff;
+  background-color: var(--alt-color);
 
   width: calc(100% - 10px);
   margin-left: 5px;
   margin-right: 5px;
 
-  margin-top: var(--vertical-card-margin);
-  margin-bottom: var(--vertical-card-margin);
+  margin-top: var(--unified-vertical-margin);
+  margin-bottom: var(--unified-vertical-margin);
 }
 
-.cardDescription {
+.CardDescription {
   font-size: 22px;
-  margin-left: var(--horizontal-card-margin);
+  margin-left: var(--unified-horizontal-margin);
 }
 
-.cardMetadata {
+.CardMetadata {
   /* Arrange all fields into another horizontal flexbox. */
   display: flex;
   flex: 1 1;
   align-items: center;
 
   /* Double margin-top is intentional. */
-  margin-top: var(--vertical-card-margin);
-  margin-bottom: var(--vertical-card-margin);
+  margin-top: var(--unified-vertical-margin);
+  margin-bottom: var(--unified-vertical-margin);
+
+  /* Expand container a bit */
+  padding-bottom: calc(var(--unified-vertical-margin) / 2);
 
   font-size: 20px;
 }
 
-/* Essentially just another field */
-.cardMetadataLanguage {
-  display: flex;
+.CardMetadataField:first-child {
+    display: flex;
 
-  /* Leftmost field has default horizontal margin to be
-  consistent with stuff above it. */
-  margin-left: var(--horizontal-card-margin);
+    /* To be consistent wih content above. */
+    margin-left: var(--unified-horizontal-margin);
 }
 
-.cardMetadataLanguageIndicator {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border-width: 1px;
-
-  align-self: center;
-}
-
-/* Same as .cardMetadataFieldText */
-.cardMetadataLanguageText {
-  margin-left: calc(var(--horizontal-card-margin) / 2);
-}
-
-.cardMetadataField {
+.CardMetadataField {
   display: flex;
 
   /* However, the space between each field shall be twice
-  as big. Using `gap` property on `.cardMetadata` introduces
+  as big. Using `gap` property on `.CardMetadata` introduces
   some artifacts (on FF at least) so we can't use it here. */
-  margin-left: calc(var(--horizontal-card-margin) * 2);
+  margin-left: calc(var(--unified-horizontal-margin) * 2);
 }
 
-.cardMetadataFieldIcon {
+.CardMetadataFieldIcon {
   align-self: center;
 }
 
-.cardMetadataFieldText {
-  margin-left: calc(var(--horizontal-card-margin) / 2);
+.CardMetadataFieldText {
+  margin-left: calc(var(--unified-horizontal-margin) / 2);
 }
